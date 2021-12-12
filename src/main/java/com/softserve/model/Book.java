@@ -25,6 +25,7 @@ public class Book {
     private String name;
 
     @Column(name = "year")
+    @Convert(converter = YearConverter.class)
     private Year year;
 
     @Column(name = "isbn", length = 13, nullable = false, unique = true)

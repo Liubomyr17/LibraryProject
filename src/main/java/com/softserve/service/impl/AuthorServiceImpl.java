@@ -51,4 +51,11 @@ public class AuthorServiceImpl implements AuthorService {
     public List<Author> list() {
         return authorDAO.list();
     }
+
+    @Override
+    @Transactional
+    public List<Author> findByName(String firstName) {
+        return authorDAO.findByFirstName(firstName);
+    }
+
 }

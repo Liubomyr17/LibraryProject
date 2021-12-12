@@ -3,21 +3,24 @@ package com.softserve.dao.impl;
 import com.softserve.dao.CrudDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
 
-    private final Class<T> classType;
-    protected final SessionFactory sessionFactory;
+    @Autowired
+    protected SessionFactory sessionFactory;
 
-    protected CrudDAOImpl(Class<T> classType, SessionFactory sessionFactory) {
-        this.classType = classType;
-        this.sessionFactory = sessionFactory;
-    }
+    Type t = getClass().getGenericSuperclass();
+    ParameterizedType pt = (ParameterizedType) t;
+    Class<T> classType = (Class<T>) pt.getActualTypeArguments()[0];
+
 
     public T save(T t) {
         sessionFactory.getCurrentSession().save(t);
@@ -49,4 +52,6 @@ public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
         cq.select(root);
         return session.createQuery(cq).getResultList();
     }
+
+
 }

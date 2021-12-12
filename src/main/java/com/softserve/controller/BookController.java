@@ -4,9 +4,11 @@ import com.softserve.model.Book;
 import com.softserve.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -30,16 +32,17 @@ public class BookController {
 
     // Save the book
     @PostMapping()
-    public ResponseEntity<?> save(@RequestBody Book book) {
-        Book b = bookService.save(book);
-        if (book == null)
+    public ResponseEntity<?> save(@RequestBody @Valid Book book, BindingResult result) {
+        if (result.hasErrors())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        return ResponseEntity.ok().body("Book is created with id: " + b.toString());
+        return new ResponseEntity<>(bookService.save(book), HttpStatus.OK);
     }
 
     // Get a single book
     @GetMapping("/{id}")
     public ResponseEntity<Book> get(@PathVariable("id") Long id) {
+        if (id == null)
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         Book book = bookService.get(id);
         if (book == null) {
             throw new ResponseStatusException(NOT_FOUND, String.format("No resource found for id (%s)", id));
@@ -49,14 +52,17 @@ public class BookController {
 
     // Update the book
     @PutMapping()
-    public ResponseEntity<?> update(@RequestBody Book book) {
-        bookService.update(book);
-        return ResponseEntity.ok().body("Book has been updated successfully!");
+    public ResponseEntity<?> update(@RequestBody @Valid Book book, BindingResult result) {
+        if (!bookService.update(book) || result.hasErrors())
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
-    // Delete the delete
+    // Delete the book
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        if (id == null)
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         bookService.delete(id);
         return ResponseEntity.ok().body("Book has been deleted successfully!");
     }

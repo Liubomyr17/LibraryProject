@@ -16,4 +16,6 @@ public interface AuthorService {
 
     List<Author> list();
 
+    List<Author> findByName(String firstName);
+
 }

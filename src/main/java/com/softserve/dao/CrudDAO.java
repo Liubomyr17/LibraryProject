@@ -13,4 +13,5 @@ public interface CrudDAO<T> {
     boolean delete(Long id);
 
     List<T> list();
+
 }
