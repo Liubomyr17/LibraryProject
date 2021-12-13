@@ -34,20 +34,6 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     @Transactional
-    public boolean update(Author author) {
-        authorDAO.update(author);
-        return true;
-    }
-
-    @Override
-    @Transactional
-    public boolean delete(Long id) {
-        authorDAO.delete(id);
-        return true;
-    }
-
-    @Override
-    @Transactional
     public List<Author> list() {
         return authorDAO.list();
     }
@@ -58,4 +44,16 @@ public class AuthorServiceImpl implements AuthorService {
         return authorDAO.findByFirstName(firstName);
     }
 
+    @Override
+    @Transactional
+    public Author update(Author author) {
+        authorDAO.update(author);
+        return author;
+    }
+
+    @Override
+    @Transactional
+    public Author delete(Long id) {
+        return authorDAO.delete(id);
+    }
 }

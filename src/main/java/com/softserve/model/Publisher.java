@@ -18,11 +18,4 @@ public class Publisher {
 
     @Column(name = "name", length = 512, nullable = false)
     private String name;
-
-    @Override
-    public String toString() {
-        return "Publisher{" +
-                "id=" + id +
-                '}';
-    }
 }

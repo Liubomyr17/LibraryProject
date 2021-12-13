@@ -8,9 +8,9 @@ public interface CrudDAO<T> {
 
     T get(Long id);
 
-    boolean update(T t);
+    T update(T t);
 
-    boolean delete(Long id);
+    T delete(Long id);
 
     List<T> list();
 

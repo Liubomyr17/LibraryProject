@@ -10,9 +10,9 @@ public interface BookService {
 
     Book get(Long id);
 
-    boolean update(Book book);
+    Book update(Book book);
 
-    boolean delete(Long id);
+    Book delete(Long id);
 
     List<Book> list();
 

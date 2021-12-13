@@ -29,11 +29,4 @@ public class Author {
     @CreationTimestamp
     @Column(name = "created_date", nullable = false, updatable = false)
     private LocalDateTime createdDate;
-
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                '}';
-    }
 }

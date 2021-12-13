@@ -32,16 +32,15 @@ public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
     }
 
     @Override
-    public boolean update(T t) {
+    public T update(T t) {
         sessionFactory.getCurrentSession().saveOrUpdate(t);
-        return true;
+        return t;
     }
 
-
-    public boolean delete(Long id) {
+    public T delete(Long id) {
         T t = sessionFactory.getCurrentSession().get(classType, id);
         sessionFactory.getCurrentSession().delete(t);
-        return true;
+        return t;
     }
 
     public List<T> list() {
@@ -52,6 +51,4 @@ public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
         cq.select(root);
         return session.createQuery(cq).getResultList();
     }
-
-
 }

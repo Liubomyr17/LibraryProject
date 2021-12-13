@@ -23,24 +23,12 @@ public class AuthorsController {
         this.authorService = authorService;
     }
 
-    // All authors
-    @GetMapping()
-    public ResponseEntity<List<Author>> list() {
-        List<Author> authors = authorService.list();
-        return ResponseEntity.ok().body(authors);
-    }
-
-    @GetMapping("/name")
-    public ResponseEntity<List<Author>> getAuthorByFirstName(@RequestParam String firstName) {
-        return new ResponseEntity<>(authorService.findByName(firstName), HttpStatus.OK);
-    }
-
     // Save the author
     @PostMapping()
     public ResponseEntity<?> save(@RequestBody @Valid Author author, BindingResult result) {
         if (result.hasErrors())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<>(authorService.save(author), HttpStatus.OK);
+        return new ResponseEntity<>(authorService.save(author), HttpStatus.CREATED);
     }
 
     // Get a single author
@@ -57,8 +45,8 @@ public class AuthorsController {
 
     // Update the author
     @PutMapping()
-    public ResponseEntity<?> update(@RequestBody @Valid Author author, BindingResult result) {
-        if (!authorService.update(author) || result.hasErrors())
+    public ResponseEntity<Author> update(@RequestBody @Valid Author author, BindingResult result) {
+        if (result.hasErrors())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(author, HttpStatus.OK);
     }
@@ -70,5 +58,17 @@ public class AuthorsController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         authorService.delete(id);
         return ResponseEntity.ok().body("Author has been deleted successfully!");
+    }
+
+    // All authors
+    @GetMapping()
+    public ResponseEntity<List<Author>> list() {
+        List<Author> authors = authorService.list();
+        return ResponseEntity.ok().body(authors);
+    }
+
+    @GetMapping("/name")
+    public ResponseEntity<List<Author>> getAuthorByFirstName(@RequestParam String firstName) {
+        return new ResponseEntity<>(authorService.findByName(firstName), HttpStatus.OK);
     }
 }

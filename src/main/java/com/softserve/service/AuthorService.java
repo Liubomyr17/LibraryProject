@@ -10,9 +10,9 @@ public interface AuthorService {
 
     Author get(Long id);
 
-    boolean update(Author author);
+    Author update(Author author);
 
-    boolean delete(Long id);
+    Author delete(Long id);
 
     List<Author> list();
 

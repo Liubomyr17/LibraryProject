@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -21,13 +22,6 @@ public class BookController {
 
     public BookController(BookService bookService) {
         this.bookService = bookService;
-    }
-
-    // All books
-    @GetMapping()
-    public ResponseEntity<List<Book>> list() {
-        List<Book> books = bookService.list();
-        return ResponseEntity.ok().body(books);
     }
 
     // Save the book
@@ -50,10 +44,17 @@ public class BookController {
         return ResponseEntity.ok().body(book);
     }
 
+    // All books
+    @GetMapping()
+    public ResponseEntity<List<Book>> list() {
+        List<Book> books = bookService.list();
+        return ResponseEntity.ok().body(books);
+    }
+
     // Update the book
     @PutMapping()
     public ResponseEntity<?> update(@RequestBody @Valid Book book, BindingResult result) {
-        if (!bookService.update(book) || result.hasErrors())
+        if (result.hasErrors())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(book, HttpStatus.OK);
     }

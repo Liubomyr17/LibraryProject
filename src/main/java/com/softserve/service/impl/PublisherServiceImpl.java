@@ -31,21 +31,20 @@ public class PublisherServiceImpl implements PublisherService {
 
     @Override
     @Transactional
-    public boolean update(Publisher publisher) {
-        publisherDAO.update(publisher);
-        return true;
-    }
-
-    @Override
-    @Transactional
-    public boolean delete(Long id) {
-        publisherDAO.delete(id);
-        return true;
-    }
-
-    @Override
-    @Transactional
     public List<Publisher> list() {
         return publisherDAO.list();
+    }
+
+    @Override
+    @Transactional
+    public Publisher update(Publisher publisher) {
+        publisherDAO.update(publisher);
+        return publisher;
+    }
+
+    @Override
+    @Transactional
+    public Publisher delete(Long id) {
+        return publisherDAO.delete(id);
     }
 }

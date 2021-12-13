@@ -34,21 +34,20 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public boolean update(Book book) {
-        bookDAO.update(book);
-        return true;
-    }
-
-    @Override
-    @Transactional
-    public boolean delete(Long id) {
-        bookDAO.delete(id);
-        return true;
-    }
-
-    @Override
-    @Transactional
     public List<Book> list() {
         return bookDAO.list();
+    }
+
+    @Override
+    @Transactional
+    public Book update(Book book) {
+        bookDAO.update(book);
+        return book;
+    }
+
+    @Override
+    @Transactional
+    public Book delete(Long id) {
+        return bookDAO.delete(id);
     }
 }
