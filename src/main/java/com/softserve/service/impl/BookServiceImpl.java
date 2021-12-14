@@ -1,6 +1,6 @@
 package com.softserve.service.impl;
 
-import com.softserve.dao.impl.BookDAOImpl;
+import com.softserve.dao.BookDAO;
 import com.softserve.model.Book;
 import com.softserve.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +12,16 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService {
 
-    private final BookDAOImpl bookDAO;
+    private final BookDAO bookDAO;
 
     @Autowired
-    public BookServiceImpl(BookDAOImpl bookDAO) {
+    public BookServiceImpl(BookDAO bookDAO) {
         this.bookDAO = bookDAO;
     }
 
     @Override
     @Transactional
     public Book save(Book book) {
-        bookDAO.save(book);
         return bookDAO.save(book);
     }
 

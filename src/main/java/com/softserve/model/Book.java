@@ -33,7 +33,7 @@ public class Book {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @CreationTimestamp
-    @Column(name = "created_date", insertable = false, nullable = false, updatable = false)
+    @Column(name = "created_date", nullable = false, updatable = false)
     private LocalDateTime createdDate;
 
     @ManyToOne

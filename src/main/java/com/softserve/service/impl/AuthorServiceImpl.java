@@ -1,6 +1,6 @@
 package com.softserve.service.impl;
 
-import com.softserve.dao.impl.AuthorDAOImpl;
+import com.softserve.dao.AuthorDAO;
 import com.softserve.model.Author;
 import com.softserve.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +12,16 @@ import java.util.List;
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
-    private final AuthorDAOImpl authorDAO;
+    private final AuthorDAO authorDAO;
 
     @Autowired
-    public AuthorServiceImpl(AuthorDAOImpl authorDAO) {
+    public AuthorServiceImpl(AuthorDAO authorDAO) {
         this.authorDAO = authorDAO;
     }
 
     @Override
     @Transactional
     public Author save(Author author) {
-        authorDAO.save(author);
         return authorDAO.save(author);
     }
 

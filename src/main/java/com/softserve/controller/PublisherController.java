@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -25,7 +24,7 @@ public class PublisherController {
     }
 
     // Create the publisher
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<?> save(@RequestBody @Valid Publisher publisher, BindingResult result) {
         if (result.hasErrors())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -45,17 +44,18 @@ public class PublisherController {
     }
 
     // Get all publishers
-    @GetMapping()
+    @GetMapping
     public List<Publisher> list() {
         return publisherService.list();
     }
 
-
     // Update the publisher
-    @PutMapping()
+    @PutMapping
     public ResponseEntity<?> update(@RequestBody @Valid Publisher publisher, BindingResult result) {
-        if (result.hasErrors())
+        if (result.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        publisherService.update(publisher);
         return new ResponseEntity<>(publisher, HttpStatus.OK);
     }
 

@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { AppConfig.class })
+@ContextConfiguration(classes = {AppConfig.class})
 @WebAppConfiguration
 public class AuthorControllerTest {
 
@@ -51,7 +51,7 @@ public class AuthorControllerTest {
     public void givenAuthorsURIWithPost_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .post("/authors")
-                        .content("{\n" +
+                        .content("{" +
                                 "    \"firstName\": \"Alexandre\"\n" +
                                 "}")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -59,5 +59,7 @@ public class AuthorControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists());
     }
+
+
 }
 

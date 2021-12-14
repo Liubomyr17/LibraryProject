@@ -13,7 +13,7 @@ public class AuthorDAOImpl extends CrudDAOImpl<Author> implements AuthorDAO {
     @Override
     public List<Author> findByFirstName(String firstName) {
         Query query = sessionFactory.getCurrentSession()
-                .createQuery("from " + classType.getName() + " where first_name=:firstName", classType);
+                .createQuery("from " + Author.class.getName() + " where first_name=:firstName", Author.class);
         query.setParameter("firstName", firstName);
         return query.getResultList();
     }

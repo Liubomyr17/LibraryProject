@@ -4,4 +4,4 @@
 -- INSERT INTO authors(id, created_date, first_name, last_name)  values (5, localtimestamp, 'Vasyl', 'Shklyar');
 
 INSERT INTO books(id, created_date, isbn, name, publisher_id)
-values (1, localtimestamp, '1234567891233', 'The Four Musketeers', 1)
+values (1, localtimestamp, '1234567891233', 'The Four Musketeers', 95)

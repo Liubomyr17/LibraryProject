@@ -10,10 +10,10 @@ public interface PublisherService {
 
     Publisher get(Long id);
 
+    List<Publisher> list();
+
     Publisher update(Publisher publisher);
 
     Publisher delete(Long id);
-
-    List<Publisher> list();
 
 }

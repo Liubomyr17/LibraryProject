@@ -10,12 +10,12 @@ public interface AuthorService {
 
     Author get(Long id);
 
-    Author update(Author author);
-
-    Author delete(Long id);
-
     List<Author> list();
 
     List<Author> findByName(String firstName);
+
+    Author update(Author author);
+
+    Author delete(Long id);
 
 }
