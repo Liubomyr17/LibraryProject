@@ -1,3 +1,4 @@
+// TODO format this class / optimize imports
 package com.softserve.controller;
 
 import com.softserve.model.Author;
@@ -24,8 +25,11 @@ public class AuthorsController {
     }
 
     // Save the author
+    // TODO redundant brackets
     @PostMapping()
+    // TODO the generic type is known
     public ResponseEntity<?> save(@RequestBody @Valid Author author, BindingResult result) {
+        // TODO do always use curved brackets, no matter what
         if (result.hasErrors())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(authorService.save(author), HttpStatus.CREATED);
@@ -34,6 +38,7 @@ public class AuthorsController {
     // Get a single author
     @GetMapping("/{id}")
     public ResponseEntity<Author> get(@PathVariable("id") Long id) {
+        // TODO do always use curved brackets, no matter what
         if (id == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         Author author = authorService.get(id);
@@ -44,8 +49,10 @@ public class AuthorsController {
     }
 
     // Update the author
+    // TODO redundant brackets
     @PutMapping()
     public ResponseEntity<Author> update(@RequestBody @Valid Author author, BindingResult result) {
+        // TODO do always use curved brackets, no matter what
         if (result.hasErrors())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(author, HttpStatus.OK);
@@ -54,6 +61,7 @@ public class AuthorsController {
     // Delete the author
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        // TODO do always use curved brackets, no matter what
         if (id == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         authorService.delete(id);
@@ -61,6 +69,7 @@ public class AuthorsController {
     }
 
     // All authors
+    // TODO redundant brackets
     @GetMapping()
     public ResponseEntity<List<Author>> list() {
         List<Author> authors = authorService.list();
@@ -68,6 +77,7 @@ public class AuthorsController {
     }
 
     @GetMapping("/name")
+    // TODO use @PathVariable instead
     public ResponseEntity<List<Author>> getAuthorByFirstName(@RequestParam String firstName) {
         return new ResponseEntity<>(authorService.findByName(firstName), HttpStatus.OK);
     }

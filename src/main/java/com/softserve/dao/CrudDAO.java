@@ -12,6 +12,7 @@ public interface CrudDAO<T> {
 
     T delete(Long id);
 
+    // TODO follow the CRUD order, list is READ
     List<T> list();
 
 }

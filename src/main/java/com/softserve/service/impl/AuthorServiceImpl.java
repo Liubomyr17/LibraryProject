@@ -1,3 +1,4 @@
+// TODO format this class / optimize imports
 package com.softserve.service.impl;
 
 import com.softserve.dao.impl.AuthorDAOImpl;
@@ -15,6 +16,7 @@ public class AuthorServiceImpl implements AuthorService {
     private final AuthorDAOImpl authorDAO;
 
     @Autowired
+    // TODO work with abstraction rather than implementation
     public AuthorServiceImpl(AuthorDAOImpl authorDAO) {
         this.authorDAO = authorDAO;
     }
@@ -22,6 +24,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     @Transactional
     public Author save(Author author) {
+        // TODO 2 creations
         authorDAO.save(author);
         return authorDAO.save(author);
     }
@@ -48,6 +51,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Transactional
     public Author update(Author author) {
         authorDAO.update(author);
+        // TODO the line above could be returned
         return author;
     }
 

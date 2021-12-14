@@ -1,3 +1,4 @@
+// TODO format this class / optimize imports
 package com.softserve.dao.impl;
 
 import com.softserve.dao.CrudDAO;
@@ -14,11 +15,13 @@ import java.util.List;
 
 public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
 
+    // TODO Use constructor injection instead
     @Autowired
     protected SessionFactory sessionFactory;
 
     Type t = getClass().getGenericSuperclass();
     ParameterizedType pt = (ParameterizedType) t;
+    // TODO Initialize this field in a constructor, no need to create 3 class variables
     Class<T> classType = (Class<T>) pt.getActualTypeArguments()[0];
 
 
@@ -31,6 +34,7 @@ public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
         return sessionFactory.getCurrentSession().get(classType, id);
     }
 
+    // TODO why using Override only here? Be consistent!
     @Override
     public T update(T t) {
         sessionFactory.getCurrentSession().saveOrUpdate(t);
@@ -38,6 +42,7 @@ public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
     }
 
     public T delete(Long id) {
+        // TODO Rename "t" which hides the field declared at line 21.
         T t = sessionFactory.getCurrentSession().get(classType, id);
         sessionFactory.getCurrentSession().delete(t);
         return t;
