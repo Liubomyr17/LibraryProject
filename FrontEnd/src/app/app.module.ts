@@ -11,15 +11,13 @@ import { BookComponent } from './component/book/book.component';
 import { BookService } from "./service/book.services";
 import { PublisherService } from "./service/publisher.services";
 import { PublisherComponent } from "./component/publisher/publisher.component";
-import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthorComponent,
     BookComponent,
-    PublisherComponent,
-    CategoryComponent
+    PublisherComponent
   ],
   imports: [
     BrowserModule,

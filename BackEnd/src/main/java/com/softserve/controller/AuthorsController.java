@@ -1,6 +1,6 @@
 package com.softserve.controller;
 
-import com.softserve.model.Author;
+import com.softserve.dto.AuthorDTO;
 import com.softserve.service.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +53,6 @@ public class AuthorsController {
     }
 
     @GetMapping("/name")
-    // TODO use @PathVariable instead
     public ResponseEntity<List<AuthorDTO>> getAuthorByFirstName(@RequestParam String firstName) {
         return new ResponseEntity<>(authorService.findByName(firstName), HttpStatus.OK);
     }
@@ -76,17 +75,5 @@ public class AuthorsController {
         }
         authorService.delete(id);
         return ResponseEntity.ok().body("Author has been deleted successfully!");
-    }
-
-    // All authors
-    @GetMapping()
-    public ResponseEntity<List<Author>> list() {
-        List<Author> authors = authorService.list();
-        return ResponseEntity.ok().body(authors);
-    }
-
-    @GetMapping("/name")
-    public ResponseEntity<List<Author>> getAuthorByFirstName(@RequestParam String firstName) {
-        return new ResponseEntity<>(authorService.findByName(firstName), HttpStatus.OK);
     }
 }
