@@ -1,4 +1,0 @@
--- DROP TABLE authors CASCADE;
--- DROP TABLE books CASCADE;
--- DROP TABLE publishers CASCADE;
-
