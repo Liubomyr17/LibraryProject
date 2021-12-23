@@ -27,10 +27,17 @@
   padding-bottom: 12%;
 }
 
-.btn-primary {
+.btn-author {
+  color: cornflowerblue;
   float: right;
   margin: 0.5%;
   position: relative;
+}
+
+.btn-add-author {
+  color: cornflowerblue;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-left: 2%;
 }
 
 footer {
