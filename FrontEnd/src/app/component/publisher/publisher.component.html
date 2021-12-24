@@ -1,8 +1,75 @@
-<div *ngFor="let publisher of publishers">
-  <div>{{publisher.id}}</div>
-  <div>{{publisher.name}}</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Publisher</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="./index.html">Home</a></li>
+        <li><a routerLink="/books">Books</a></li>
+        <li><a routerLink="/authors">Authors</a></li>
+        <li class="active"><a routerLink="/publishers">Publishers</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <a></a>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<button class="btn btn-add-publisher">
+  <span class="fa">Add Publisher</span>
+</button>
+
+<div class="container">
+  <div class="row">
+
+    <div *ngFor="let publisher of publishers">
+
+      <div class="col-sm-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+
+            <button class="btn btn-author">
+              <span class="fa fa-close"></span>
+            </button>
+
+            <button class="btn btn-author">
+              <span class="fa fa-edit"></span>
+            </button>
+
+          </div>
+          <div class="panel-body text-center">
+
+            <div>{{publisher.name}}</div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 </div>
+<br>
 
-<!--<app-root> </app-root>-->
+<footer class="container-fluid text-center">
+  <p>Copyright&copy; Application is making by Liubomyr Izdepskyi 2021</p>
+</footer>
+</body>
+</html>
 
