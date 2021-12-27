@@ -1,0 +1,51 @@
+.navbar {
+  margin-bottom: 40px;
+  border-radius: 0;
+}
+
+.container {
+  margin-bottom: 5%;
+}
+
+.btn-group {
+  margin-left: 0.5%;
+  color: slategray;
+}
+
+/* Remove the jumbotron's default bottom margin */
+.form-inline {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.panel-body {
+  font-size: 30px;
+  font-family: 'Dancing Script', cursive;
+}
+
+.panel-heading {
+  padding-bottom: 12%;
+}
+
+.btn-author {
+  color: cornflowerblue;
+  float: right;
+  margin: 0.5%;
+  position: relative;
+}
+
+.btn-add-author {
+  color: cornflowerblue;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-left: 2%;
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 25px;
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}

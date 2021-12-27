@@ -49,6 +49,9 @@ public class AuthorsController {
     @GetMapping
     public ResponseEntity<List<AuthorDTO>> list() {
         List<AuthorDTO> authors = authorService.list();
+        if (authors.isEmpty()) {
+            System.out.println("List of Authors is empty");
+        }
         return ResponseEntity.ok().body(authors);
     }
 
