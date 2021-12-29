@@ -31,9 +31,12 @@
   </div>
 </nav>
 
+<div class="modal-body">
 <button class="btn btn-add-publisher">
-  <span class="fa">Add Publisher</span>
+  <span onclick="window.location.href='/add'" class="fa">Add Publisher</span>
 </button>
+</div>
+
 
 <div class="container">
   <div class="row">
@@ -44,12 +47,15 @@
         <div class="panel panel-primary">
           <div class="panel-heading">
 
+
+            <button class="btn btn-author fa fa-trash" (click)="delete(publisher.id || 0)"></button>
+
             <button class="btn btn-author">
-              <span class="fa fa-close"></span>
+              <span class="fa fa-edit" onclick="window.location.href='/update'"></span>
             </button>
 
             <button class="btn btn-author">
-              <span class="fa fa-edit"></span>
+              <span class="fa fa-list"></span>
             </button>
 
           </div>
@@ -65,11 +71,7 @@
   </div>
 
 </div>
-<br>
 
-<footer class="container-fluid text-center">
-  <p>Copyright&copy; Application is making by Liubomyr Izdepskyi 2021</p>
-</footer>
 </body>
 </html>
 

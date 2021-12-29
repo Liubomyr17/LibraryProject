@@ -38,13 +38,3 @@
 .panel-heading {
   padding-bottom: 12%;
 }
-
-footer {
-  background-color: #f2f2f2;
-  padding: 25px;
-  bottom: 0;
-  position: fixed;
-  left: 0;
-  width: 100%;
-  text-align: center;
-}

@@ -24,7 +24,7 @@ public class PublisherController {
     }
 
     // Create the publisher
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<PublisherDTO> save(@RequestBody @Valid PublisherDTO publisher, BindingResult result) {
         if (result.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -52,8 +52,10 @@ public class PublisherController {
     }
 
     // Update the publisher
-    @PutMapping
-    public ResponseEntity<PublisherDTO> update(@RequestBody @Valid PublisherDTO publisher, BindingResult result) {
+    @CrossOrigin
+    @PutMapping("/update/{id}")
+    public ResponseEntity<PublisherDTO> update(@RequestBody @Valid PublisherDTO publisher, BindingResult result, @PathVariable("id") Long id
+    ) {
         if (result.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

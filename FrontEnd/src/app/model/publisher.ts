@@ -1,5 +1,5 @@
-export interface Publisher {
+export class Publisher {
 
-  id: Number;
-  name: String;
+  id?: Number;
+  name?: String;
 }
