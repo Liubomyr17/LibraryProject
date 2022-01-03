@@ -52,8 +52,8 @@ public abstract class BasicDAOImpl<T> implements BasicDAO<T> {
 
     @Override
     public boolean delete(Long id) {
-        T type = sessionFactory.getCurrentSession().get(classType, id);
-        sessionFactory.getCurrentSession().delete(type);
+        T obj = sessionFactory.getCurrentSession().get(classType, id);
+        sessionFactory.getCurrentSession().delete(obj);
         return true;
     }
 }

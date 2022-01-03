@@ -63,6 +63,7 @@ public class PublisherController {
         return new ResponseEntity<>(publisher, HttpStatus.OK);
     }
 
+    @CrossOrigin
     // Delete the publisher
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {

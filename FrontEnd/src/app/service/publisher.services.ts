@@ -18,17 +18,7 @@ export class PublisherService {
     return this.http.get<Publisher[]>(`${this.apiServerUrl}/publishers`);
   }
 
-  public save(publisher: Publisher) {
-    return this.http.post<Publisher>(this.apiServerUrl + '/publishers/add', publisher);
+  public save(publisher: Publisher): Observable<Publisher> {
+    return this.http.post<Publisher>(`${this.apiServerUrl}/publishers/add`, publisher);
   }
-
-  public delete(id: Number) {
-    console.log('Delete method')
-    return this.http.delete(`${this.apiServerUrl}/publishers/${id}`)
-  }
-
-  public update(publisher: Publisher) {
-    return this.http.put(`${this.apiServerUrl}/publishers/update`, publisher.name);
-  }
-
 }

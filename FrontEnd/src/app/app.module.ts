@@ -11,8 +11,6 @@ import { BookComponent } from './component/book/book.component';
 import { BookService } from "./service/book.services";
 import { PublisherService } from "./service/publisher.services";
 import { PublisherComponent } from "./component/publisher/publisher.component";
-import { PublisherAddFormComponent } from "./component/publisher/publisherAddForm.component"
-import { PublisherUpdateFormComponent} from "./component/publisher/publisherUpdateForm.component";
 
 @NgModule({
   declarations: [
@@ -20,8 +18,6 @@ import { PublisherUpdateFormComponent} from "./component/publisher/publisherUpda
     AuthorComponent,
     BookComponent,
     PublisherComponent,
-    PublisherAddFormComponent,
-    PublisherUpdateFormComponent
   ],
   imports: [
     BrowserModule,
