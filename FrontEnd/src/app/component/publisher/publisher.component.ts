@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Publisher} from "../../model/publisher";
-import { PublisherService} from "../../service/publisher.services";
-import { HttpErrorResponse } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {Publisher} from "../../model/publisher";
+import {PublisherService} from "../../service/publisher.services";
+import {HttpErrorResponse} from '@angular/common/http';
+import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -12,9 +12,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PublisherComponent implements OnInit {
 
-  publisher: Publisher;
-
   public publishers: Publisher[] = [];
+  public editPublisher!: Publisher;
+  public deletePublisher!: Publisher;
+  public publisher: Publisher;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,6 +53,18 @@ export class PublisherComponent implements OnInit {
     );
   }
 
+  public onUpdatePublisher(publisher: Publisher): void {
+    this.publisherService.update(publisher).subscribe(
+      (response: Publisher) => {
+        console.log(response);
+        this.list();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
 
   public onOpenModal(publisher: Publisher, mode: string): void {
     const container = document.getElementById('main-container');
@@ -63,14 +76,14 @@ export class PublisherComponent implements OnInit {
       button.setAttribute('data-target', '#addPublisherModal');
     }
     if (mode === 'edit') {
-      // this.editEmployee = employee;
+      this.editPublisher = publisher;
       button.setAttribute('data-target', '#updatePublisherModal');
     }
     if (mode === 'delete') {
       // this.deleteEmployee = employee;
       button.setAttribute('data-target', '#deletePublisherModal');
     }
-    if(container != null) container.appendChild(button);
+    if (container != null) container.appendChild(button);
     button.click();
 
   }

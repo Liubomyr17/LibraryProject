@@ -40,7 +40,7 @@ public class PublisherServiceImpl implements PublisherService {
     @Override
     @Transactional
     public PublisherDTO update(PublisherDTO publisher) {
-        return PublisherMapper.INSTANCE.toDto(publisherDAO.update(PublisherMapper.INSTANCE.toEntity(publisher)));
+        return PublisherMapper.INSTANCE.toDto(publisherDAO.save(PublisherMapper.INSTANCE.toEntity(publisher)));
     }
 
     @Override

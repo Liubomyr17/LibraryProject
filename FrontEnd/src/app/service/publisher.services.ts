@@ -21,4 +21,8 @@ export class PublisherService {
   public save(publisher: Publisher): Observable<Publisher> {
     return this.http.post<Publisher>(`${this.apiServerUrl}/publishers/add`, publisher);
   }
+
+  public update(publisher: Publisher): Observable<Publisher> {
+    return this.http.put<Publisher>(`${this.apiServerUrl}/publishers/update`, publisher);
+  }
 }

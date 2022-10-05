@@ -53,6 +53,31 @@
           <div class="panel-heading">
 
             <button class="btn btn-author">
+              <span class="fa fa-trash"></span>
+            </button>
+
+            <button class="btn btn-author">
+              <span class="fa fa-edit"></span>
+            </button>
+
+          </div>
+          <div class="panel-body text-center">
+
+            <div>{{author.firstName}} {{author.lastName}}</div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngFor="let author of authors">
+
+      <div class="col-sm-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+
+            <button class="btn btn-author">
               <span class="fa fa-close"></span>
             </button>
 
@@ -70,14 +95,36 @@
       </div>
 
     </div>
+
+    <div *ngFor="let author of authors">
+
+      <div class="col-sm-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+
+            <button class="btn btn-author">
+              <span class="fa fa-close"></span>
+            </button>
+
+            <button class="btn btn-author">
+              <span class="fa fa-edit"></span>
+            </button>
+
+          </div>
+          <div class="panel-body text-center">
+
+            <div>{{author.firstName}} {{author.lastName}}</div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
-<br>
 
-<footer class="container-fluid text-center">
-  <p>Copyright&copy; Application is making by Liubomyr Izdepskyi 2021</p>
-</footer>
 </body>
 </html>
 

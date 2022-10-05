@@ -1,5 +1,6 @@
 package com.softserve.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.Year;

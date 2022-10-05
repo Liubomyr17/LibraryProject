@@ -46,7 +46,7 @@ public abstract class BasicDAOImpl<T> implements BasicDAO<T> {
 
     @Override
     public T update(T t) {
-        sessionFactory.getCurrentSession().saveOrUpdate(t);
+        sessionFactory.getCurrentSession().save(t);
         return t;
     }
 

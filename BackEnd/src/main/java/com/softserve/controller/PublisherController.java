@@ -51,26 +51,18 @@ public class PublisherController {
         return publisherService.list();
     }
 
-    // Update the publisher
     @CrossOrigin
-    @PutMapping("/update/{id}")
-    public ResponseEntity<PublisherDTO> update(@RequestBody @Valid PublisherDTO publisher, BindingResult result, @PathVariable("id") Long id
-    ) {
-        if (result.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        publisherService.update(publisher);
-        return new ResponseEntity<>(publisher, HttpStatus.OK);
+    // Update the publisher
+    @PutMapping("/update")
+    public ResponseEntity<PublisherDTO> update(@RequestBody @Valid PublisherDTO publisher) {
+        PublisherDTO publisherDTO = publisherService.save(publisher);
+        return new ResponseEntity<>(publisherDTO, HttpStatus.OK);
     }
 
-    @CrossOrigin
     // Delete the publisher
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
-        if (id == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
         publisherService.delete(id);
-        return ResponseEntity.ok().body("Publisher has been deleted successfully!");
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
